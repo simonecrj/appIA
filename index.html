@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Tela Inicial - Dashboard -->
+        <div id="dashboard" class="screen">
+            <h1>Dashboard</h1>
+            <div class="weather-info">
+                <img src="images/weather.png" alt="Weather Icon">
+                <span>25°C, Parcialmente Nublado</span>
+            </div>
+            <div class="soil-moisture">
+                <img src="images/soil.png" alt="Soil Icon">
+                <span>Umidade do Solo: 60%</span>
+            </div>
+            <div class="recommendation">
+                <img src="images/recommendation.png" alt="Recommendation Icon">
+                <span>Recomendação: Irrigar 5L às 7h</span>
+            </div>
+            <div class="buttons">
+                <button onclick="navigateTo('weather-data')">Detalhes</button>
+                <button onclick="navigateTo('plant-profile')">Configurar Planta</button>
+                <button onclick="navigateTo('history')">Histórico</button>
+            </div>
+        </div>
+        
+        <!-- Tela de Dados Climáticos -->
+        <div id="weather-data" class="screen hidden">
+            <h1>Dados Climáticos</h1>
+            <div class="forecast">
+                <p>Previsão de 7 dias</p>
+                <!-- Previsão de 7 dias -->
+            </div>
+            <div class="evapotranspiration">
+                <span>Evapotranspiração: 4 mm/dia</span>
+            </div>
+            <div>
+                <button onclick="navigateTo('dashboard')">Voltar ao Dashboard</button>
+            </div>
+        </div>
+
+        <!-- Tela de Análise de Solo -->
+        <div id="soil-analysis" class="screen hidden">
+            <h1>Análise de Solo</h1>
+            <div class="soil-moisture">
+                <span>Umidade Atual: 55%</span>
+            </div>
+            <div class="soil-type">
+                <span>Tipo de Solo: Arenoso</span>
+            </div>
+            <div class="moisture-history">
+                <p>Histórico de umidade (últimos 7 dias)</p>
+                <!-- Gráfico de linha -->
+            </div>
+            <div>
+                <button onclick="updateSoilData()">Atualizar Dados</button>
+            </div>
+        </div>
+
+        <!-- Tela de Perfil da Planta -->
+        <div id="plant-profile" class="screen hidden">
+            <h1>Perfil da Planta</h1>
+            <div class="plant-list">
+                <img src="images/plant.png" alt="Plant Icon">
+                <p>Plantas: Tomate, Rosa, Milho</p>
+            </div>
+            <div class="plant-species">
+                <label for="species">Espécie:</label>
+                <input type="text" id="species" name="species">
+            </div>
+            <div class="water-needs">
+                <span>Necessidades hídricas padrão: 600-800 mm/ciclo</span>
+            </div>
+            <div>
+                <button onclick="savePlantProfile()">Salvar</button>
+            </div>
+        </div>
+
+        <!-- Tela de Recomendações -->
+        <div id="recommendations" class="screen hidden">
+            <h1>Recomendações</h1>
+            <div class="recommendation">
+                <span>Hoje: Irrigar 5L por m² às 7h</span>
+                <p>Baseado em 25°C, 10% de chuva prevista, solo a 55% de umidade</p>
+            </div>
+            <div>
+                <button onclick="confirmIrrigation()">Confirmar Irrigação</button>
+            </div>
+        </div>
+
+        <!-- Tela de Configurações -->
+        <div id="settings" class="screen hidden">
+            <h1>Configurações</h1>
+            <div class="location">
+                <label for="location">Localização:</label>
+                <input type="text" id="location" name="location">
+            </div>
+            <div class="integration">
+                <label for="iot">Integração com sensores IoT:</label>
+                <input type="checkbox" id="iot" name="iot">
+            </div>
+            <div class="unit">
+                <label for="unit">Unidade de medida:</label>
+                <select id="unit" name="unit">
+                    <option value="litros">Litros</option>
+                    <option value="milimetros">Milímetros</option>
+                </select>
+            </div>
+            <div>
+                <button onclick="saveSettings()">Salvar Configurações</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>
