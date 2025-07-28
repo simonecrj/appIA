@@ -9,7 +9,7 @@ graph TD
     %% -------------------- Definição dos Atores --------------------
 
 Paciente((Paciente))
-Medico((Medico)
+Medico((Medico))
  
     Paciente --> A[Agendar Consulta]
     Paciente --> B[Consultar Histórico de Saúde]
