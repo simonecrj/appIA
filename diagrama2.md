@@ -23,24 +23,32 @@ Medico((Medico)
         (Registrar Resultados de Glicemia) as UC6
         (Registrar Resultados de Pressão Arterial) as UC7
         (Consultar Histórico de Saúde) as UC8
+    Paciente --> A[Agendar Consulta]
+    Paciente --> B[Consultar Histórico de Saúde]
+    Paciente --> C[Solicitar Cancelamento de Consulta]
+    Paciente --> D[Registrar Resultados de Glicemia]
+    Paciente --> E[Registrar Resultados de Pressão Arterial]
+    Paciente --> F[Consultar Histórico de Saúde]
 
-        %% -------------------- Relacionamentos de Associação (Ator -> Caso de Uso) --------------------
-        Paciente -- UC1
-        Paciente -- UC2
-        Paciente -- UC6
-        Paciente -- UC7
-        Paciente -- UC8
+    Medico --> A
+    Medico --> G[Visualizar Histórico de Paciente]
+    Medico --> C
+    Medico --> D
+    Medico --> E
+    Medico --> F
 
-        Médico -- UC1
-        Médico -- UC3
-        Médico -- UC4
-        Médico -- UC5
-        Médico -- UC6
-        Médico -- UC7
-        Médico -- UC8
+    E --> B
 
-        %% -------------------- Relacionamentos de Extensão (Opcional) --------------------
-        UC3 <.. UC4 : <<extend>>
-        UC3 <.. UC5 : <<extend>>
+    %% Notas (simuladas com texto)
+    subgraph Notas
+        NoteP["Paciente:\n- Agenda consultas\n- Visualiza e registra saúde"]
+        NoteM["Médico:\n- Agenda para pacientes\n- Visualiza históricos\n- Registra resultados"]
+    end
+
+    Paciente --> NoteP
+    Medico --> NoteM
+    C <.. D : <<extend>>
+    C <.. E : <<extend>>
+
     }
 ```
