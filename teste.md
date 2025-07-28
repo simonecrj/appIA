@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[Actor: Admin]
     B[Actor: Médico]
@@ -39,3 +40,4 @@ graph TD
     D -->|Consulta| UC9
     D -->|Acessa| UC10
     D -->|Recebe| UC12
+```
