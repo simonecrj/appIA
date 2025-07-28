@@ -1,61 +1,55 @@
-%% Definição do tipo de gráfico como "grafo de cima para baixo" (Top-Down)
-graph TD
+## Diagrama de Caso de Uso — Sistema Vida Mais Fácil
 
-    %% -------------------- Definição dos Atores --------------------
+```mermaid
+usecaseDiagram
     actor Paciente
-    actor Médico %% Renomeado de "Profissional de Saúde"
+    actor Medico
 
-    %% -------------------- Delimitação do Sistema (Boundary) --------------------
-    rectangle "Sistema Vida+Fácil" {
+    Paciente --> (Agendar Consulta)
+    Paciente --> (Consultar Histórico de Saúde)
+    Paciente --> (Registrar Resultados de Glicemia)
+    Paciente --> (Registrar Resultados de Pressão Arterial)
 
-        %% -------------------- Casos de Uso --------------------
-        (Realizar Cadastro de Usuário) as UC1
-        (Realizar Login) as UC2
-        (Visualizar Dashboard) as UC3
-        (Acessar Conteúdo Educativo) as UC9
+    Medico --> (Agendar Consulta)
+    Medico --> (Visualizar Histórico de Paciente)
+    Medico --> (Registrar Resultados de Glicemia)
+    Medico --> (Registrar Resultados de Pressão Arterial)
 
-        (Agendar Atendimento) as UC4 %% Representa o "Agendamento da Consulta"
-        (Visualizar Histórico de Agendamentos) as UC6
-        (Registrar Indicadores de Saúde) as UC7
-        (Consultar Histórico de Glicemia e Pressão Arterial) as UC8 %% Nome mais específico
-        (Confirmar/Cancelar Agendamento - Paciente) as UC11P %% Ajustado para Paciente
+    (Visualizar Histórico de Paciente) --|> (Consultar Histórico de Saúde) : inclui
 
-        (Gerenciar Disponibilidade) as UC10
-        (Visualizar Agendamentos Recebidos) as UC12
-        (Confirmar/Cancelar Agendamento - Médico) as UC11S %% Ajustado para Médico
+    note right of Paciente
+      - Agenda consultas para si
+      - Visualiza e registra seus dados de saúde
+    end
 
-        %% Casos de Uso Incluídos
-        (Consultar Médicos) as UC4a %% Ajustado para Médicos
-        (Visualizar Horários Livres) as UC4b
+    note left of Medico
+      - Agenda consultas para pacientes
+      - Visualiza o histórico de todos os pacientes
+      - Registra resultados dos pacientes
+    end
+```
 
-        %% -------------------- Relacionamentos de Associação (Ator -> Caso de Uso) --------------------
-        Paciente -- UC1
-        Médico -- UC1
+### Atores
 
-        Paciente -- UC2
-        Médico -- UC2
+**Paciente:**  
+Utiliza o sistema para agendar consultas, visualizar seu histórico de saúde e registrar informações sobre glicemia e pressão arterial.
 
-        Paciente -- UC3
-        Médico -- UC3
+**Médico:**  
+Utiliza o sistema para agendar consultas, visualizar o histórico de saúde do paciente e registrar informações sobre glicemia e pressão arterial.
 
-        Paciente -- UC9
+### Casos de Uso
 
-        Paciente -- UC4
+- **Agendar Consulta:**  
+  O paciente ou médico pode agendar uma consulta, especificando data, hora e motivo.
 
-        Paciente -- UC6
+- **Consultar Histórico de Saúde:**  
+  O paciente pode visualizar seu próprio histórico completo; o médico pode usar essa função ao acessar o histórico de um paciente.
 
-        Paciente -- UC7
+- **Registrar Resultados de Glicemia:**  
+  O paciente ou médico pode registrar os níveis de glicemia.
 
-        Paciente -- UC8
+- **Registrar Resultados de Pressão Arterial:**  
+  O paciente ou médico pode registrar os níveis de pressão arterial.
 
-        Paciente -- UC11P
-
-        Médico -- UC10
-        Médico -- UC11S
-        Médico -- UC12
-
-        %% -------------------- Relacionamentos de Inclusão (Caso de Uso <<includes>> Outro Caso de Uso) --------------------
-        UC4 ..> UC4a : <<includes>>
-        UC4 ..> UC4b : <<includes>>
-    }
-
+- **Visualizar Histórico de Paciente:**  
+  O médico pode acessar o histórico completo do paciente, incluindo glicemia e pressão arterial, para apoio no diagnóstico e tratamento.
