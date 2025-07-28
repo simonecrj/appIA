@@ -3,7 +3,7 @@
 Aqui está o diagrama de caso de uso para o nosso sistema:
 
 ```mermaid
-graph TD
+graph TD;
 
     actor Paciente
     actor Medico
