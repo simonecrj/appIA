@@ -10,19 +10,7 @@ graph TD
 
 Paciente((Paciente))
 Medico((Medico)
-
-    %% -------------------- Delimitação do Sistema (Boundary) --------------------
-    rectangle "Sistema Vida+Fácil" {
-
-        %% -------------------- Casos de Uso --------------------
-        (Agendar Consulta) as UC1
-        (Solicitar Cancelamento de Consulta) as UC2
-        (Realizar Consulta) as UC3
-        (Prescrever Medicação) as UC4
-        (Solicitar Realização de Exames) as UC5
-        (Registrar Resultados de Glicemia) as UC6
-        (Registrar Resultados de Pressão Arterial) as UC7
-        (Consultar Histórico de Saúde) as UC8
+ 
     Paciente --> A[Agendar Consulta]
     Paciente --> B[Consultar Histórico de Saúde]
     Paciente --> C[Solicitar Cancelamento de Consulta]
