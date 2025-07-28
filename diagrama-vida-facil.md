@@ -4,7 +4,9 @@ Este diagrama ilustra os casos de uso para o sistema Vida+Fácil, focando nos at
 
 ```mermaid
 graph TD
+
 actor Paciente
+
 actor Médico
 
     %% -------------------- Definição dos Atores --------------------
