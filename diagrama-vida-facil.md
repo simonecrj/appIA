@@ -1,4 +1,4 @@
-flowchart TD
+graph TD
 
 %% Paciente actor and its actions
 subgraph Paciente
