@@ -8,7 +8,7 @@ graph TD
     actor Paciente
     actor Medico
 
-    rectangle "Sistema Médico" {
+    rectangle "Sistema Medico" {
 
         (Solicitar Consulta) as UC1
         (Solicitar Cancelamento de Consulta) as UC2
@@ -20,7 +20,7 @@ graph TD
         Paciente -- UC1
         Paciente -- UC2
       
-        Médico -- UC5
+        Medico -- UC5
 
         UC1 ..> UC2 : <<include>>
 
