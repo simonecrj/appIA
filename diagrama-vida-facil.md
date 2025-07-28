@@ -5,8 +5,8 @@ Aqui está o diagrama de caso de uso para o nosso sistema:
 ```mermaid
 graph TD;
 
-    actor Paciente
-    actor Medico
+    actor Paciente;
+    actor Medico;
 
     rectangle "Sistema Medico" {
 
