@@ -1,32 +1,30 @@
 ## Diagrama de Caso de Uso — Sistema Vida Mais Fácil
 
 ```mermaid
-usecaseDiagram
-    actor Paciente
-    actor Medico
+graph TD
+    Paciente((Paciente))
+    Medico((Médico))
 
-    Paciente --> (Agendar Consulta)
-    Paciente --> (Consultar Histórico de Saúde)
-    Paciente --> (Registrar Resultados de Glicemia)
-    Paciente --> (Registrar Resultados de Pressão Arterial)
+    Paciente --> A[Agendar Consulta]
+    Paciente --> B[Consultar Histórico de Saúde]
+    Paciente --> C[Registrar Resultados de Glicemia]
+    Paciente --> D[Registrar Resultados de Pressão Arterial]
 
-    Medico --> (Agendar Consulta)
-    Medico --> (Visualizar Histórico de Paciente)
-    Medico --> (Registrar Resultados de Glicemia)
-    Medico --> (Registrar Resultados de Pressão Arterial)
+    Medico --> A
+    Medico --> E[Visualizar Histórico de Paciente]
+    Medico --> C
+    Medico --> D
 
-    (Visualizar Histórico de Paciente) --|> (Consultar Histórico de Saúde) : inclui
+    E --> B
 
-    note right of Paciente
-      - Agenda consultas para si
-      - Visualiza e registra seus dados de saúde
+    %% Notas (simuladas com texto)
+    subgraph Notas
+        NoteP["Paciente:\n- Agenda consultas\n- Visualiza e registra saúde"]
+        NoteM["Médico:\n- Agenda para pacientes\n- Visualiza históricos\n- Registra resultados"]
     end
 
-    note left of Medico
-      - Agenda consultas para pacientes
-      - Visualiza o histórico de todos os pacientes
-      - Registra resultados dos pacientes
-    end
+    Paciente --> NoteP
+    Medico --> NoteM
 ```
 
 ### Atores
