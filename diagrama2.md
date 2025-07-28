@@ -7,8 +7,10 @@ graph TD
 
 
     %% -------------------- Definição dos Atores --------------------
-    actor Paciente
-    actor Médico
+actor Paciente
+actor Medico
+Paciente((Paciente))
+Medico((Medico)
 
     %% -------------------- Delimitação do Sistema (Boundary) --------------------
     rectangle "Sistema Vida+Fácil" {
