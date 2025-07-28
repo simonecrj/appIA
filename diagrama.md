@@ -1,6 +1,6 @@
 ```mermaid
-%% Define o tipo de gráfico como "grafo de cima para baixo" (Top-Down)
 graph TD
+
 
     %% -------------------- Definição dos Atores --------------------
     actor Paciente
