@@ -1,47 +1,56 @@
-# Diagrama de Caso de Uso - Sistema Vida+Fácil (Atualizado)
+flowchart TD
 
-Este diagrama ilustra os casos de uso para o sistema Vida+Fácil, focando nos atores Paciente e Médico.
-```mermaid
-graph TD
-actor Paciente
-actor Medico
-    %% -------------------- Definição dos Atores --------------------
-   
+%% Paciente actor and its actions
+subgraph Paciente
+    Paciente[Paciente]
+    Paciente --> CadastrarSe["Cadastrar-se"]
+    Paciente --> FazerLoginPaciente["Fazer login"]
+    Paciente --> AgendarConsulta["Agendar Consulta"]
+    Paciente --> VisualizarHistorico["Visualizar Histórico"]
+    Paciente --> RegistrarGlicemia["Registrar Glicemia"]
+    Paciente --> RegistrarPressao["Registrar Pressão Arterial"]
+end
 
-    %% -------------------- Delimitação do Sistema (Boundary) --------------------
-    rectangle "Sistema Vida+Fácil" {
+%% Médico actor and its actions
+subgraph Medico
+    Medico[Medico]
+    Medico --> FazerLoginMedico["Fazer login"]
+    Medico --> VisualizarAgenda["Visualizar Agenda"]
+    Medico --> VisualizarHistoricoPaciente["Visualizar Histórico Paciente"]
+    Medico --> RegistrarGlicemiaMedico["Registrar Glicemia Médico"]
+    Medico --> RegistrarPressaoMedico["Registrar Pressão Médico"]
+    Medico --> RegistrarObservacoes["Registrar Observações"]
+end
 
-        %% -------------------- Casos de Uso --------------------
-        (Agendar Consulta) as UC1
-        (Solicitar Cancelamento de Consulta) as UC2
-        (Realizar Consulta) as UC3
-        (Prescrever Medicação) as UC4
-        (Solicitar Realização de Exames) as UC5
-        (Registrar Resultados de Glicemia) as UC6
-        (Registrar Resultados de Pressão Arterial) as UC7
-        (Consultar Histórico de Saúde) as UC8
+%% Consulta features handled by Médico
+subgraph Consulta
+    RegistrarDiagnostico["Registrar Diagnóstico"]
+    PrescreverMedicamentos["Prescrever Medicamentos"]
+    AnexarExames["Anexar Exames"]
+    EncerrarConsulta["Encerrar Consulta"]
+end
+Medico --> RegistrarDiagnostico
+Medico --> PrescreverMedicamentos
+Medico --> AnexarExames
+Medico --> EncerrarConsulta
 
-        %% -------------------- Relacionamentos de Associação (Ator -> Caso de Uso) --------------------
-        Paciente -- UC1 %% Paciente pode agendar consulta
-        Paciente -- UC2 %% Paciente pode solicitar cancelamento
-        Paciente -- UC6 %% Paciente pode registrar glicemia
-        Paciente -- UC7 %% Paciente pode registrar pressão arterial
-        Paciente -- UC8 %% Paciente pode consultar seu histórico
+%% Agendamento features handled by Médico
+subgraph Agendamento
+    ConfirmarConsulta["Confirmar Consulta"]
+    CancelarAgendamento["Cancelar Agendamento"]
+    NotificarPaciente["Notificar Paciente"]
+end
+Medico --> ConfirmarConsulta
+Medico --> CancelarAgendamento
+Medico --> NotificarPaciente
 
-        Medico -- UC1 %% Médico pode agendar consulta
-        Medico -- UC3 %% Médico realiza a consulta
-        Medico -- UC4 %% Médico prescreve medicação
-        Medico -- UC5 %% Médico solicita exames
-        Medico -- UC6 %% Médico pode registrar glicemia (para o paciente)
-        Medico -- UC7 %% Médico pode registrar pressão arterial (para o paciente)
-        Medico -- UC8 %% Médico pode consultar o histórico do paciente
-
-        %% -------------------- Relacionamentos de Extensão (Opcional) --------------------
-        %% Realizar Consulta pode estender para Prescrever Medicação
-        UC3 <.. UC4 : <<extend>>
-
-        %% Realizar Consulta pode estender para Solicitar Realização de Exames
-        UC3 <.. UC5 : <<extend>>
-    }
-```
+%% Patient Record access by Médico
+subgraph RegistroDoPaciente["Registro do Paciente"]
+    VisualizarRegistrosGlicemia["Visualizar Registros de Glicemia"]
+    VisualizarRegistrosPressao["Visualizar Registros de Pressão"]
+    ComplementarRegistros["Complementar Registros"]
+end
+Medico --> VisualizarRegistrosGlicemia
+Medico --> VisualizarRegistrosPressao
+Medico --> ComplementarRegistros
 
