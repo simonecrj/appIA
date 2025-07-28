@@ -27,6 +27,9 @@ Medico((Medico))
 
     E --> B
 
+  
+    E --> B
+
     %% Notas (simuladas com texto)
     subgraph Notas
         NoteP["Paciente:\n- Agenda consultas\n- Visualiza e registra saúde"]
@@ -35,6 +38,6 @@ Medico((Medico))
 
     Paciente --> NoteP
     Medico --> NoteM
-
-    }
 ```
+
+
