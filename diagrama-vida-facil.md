@@ -3,12 +3,12 @@
 Este diagrama ilustra os casos de uso para o sistema Vida+Fácil, focando nos atores Paciente e Médico.
 
 ```mermaid
-%% Define o tipo de gráfico como "grafo de cima para baixo" (Top-Down)
 graph TD
+actor Paciente
+actor Médico
 
     %% -------------------- Definição dos Atores --------------------
-    actor Paciente
-    actor Médico
+   
 
     %% -------------------- Delimitação do Sistema (Boundary) --------------------
     rectangle "Sistema Vida+Fácil" {
