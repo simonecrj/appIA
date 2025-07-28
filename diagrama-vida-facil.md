@@ -2,22 +2,22 @@
 
 ```mermaid
 sequenceDiagram
-    actor Aplicacao cliente
+    actor Paciente
     participant Login endpoint
     participant Contador endpoint
-    Aplicacao cliente->>Login endpoint: POST /login
-    Note over Aplicacao cliente,Login endpoint: Informar os atributos<br/>userID e password no JSON
+    Paciente->>Login endpoint: POST /login
+    Note over Paciente,Login endpoint: Informar os atributos<br/>PacienteID e password no JSON
     alt credenciais validas
-        Login endpoint-->>Aplicacao cliente: 200 OK com Token JWT retornado
+        Login endpoint-->>Paciente: 200 OK com Token JWT retornado
     else credenciais invalidas
-        Login endpoint-->>Aplicacao cliente: 401 Unauthorized
+        Login endpoint-->>Paciente: 401 Unauthorized
     end
-    Aplicacao cliente->>Contador endpoint: GET /contador
-    Note over Aplicacao cliente,Contador endpoint: Token jwt informado como 'Bearer Token' no header Authorization
+    Medico->>Contador endpoint: GET /contador
+    Note over Medico,Contador endpoint: Token jwt informado como 'Bearer Token' no header Authorization
     alt Token JWT valido
-        Contador endpoint-->>Aplicacao cliente: 200 OK com resultado da contagem
+        Contador endpoint-->>Paciente: 200 OK com resultado da contagem
     else Token JWT invalido ou faltando
-        Contador endpoint-->>Aplicacao cliente: 401 Unauthorized
+        Contador endpoint-->>Paciente: 401 Unauthorized
     end
 ```
 
