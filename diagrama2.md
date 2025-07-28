@@ -35,8 +35,6 @@ Medico((Medico))
 
     Paciente --> NoteP
     Medico --> NoteM
-    C <-- D : <<extend>>
-    C <-- E : <<extend>>
 
     }
 ```
