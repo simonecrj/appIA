@@ -1,1 +1,61 @@
+%% Definição do tipo de gráfico como "grafo de cima para baixo" (Top-Down)
+graph TD
+
+    %% -------------------- Definição dos Atores --------------------
+    actor Paciente
+    actor Médico %% Renomeado de "Profissional de Saúde"
+
+    %% -------------------- Delimitação do Sistema (Boundary) --------------------
+    rectangle "Sistema Vida+Fácil" {
+
+        %% -------------------- Casos de Uso --------------------
+        (Realizar Cadastro de Usuário) as UC1
+        (Realizar Login) as UC2
+        (Visualizar Dashboard) as UC3
+        (Acessar Conteúdo Educativo) as UC9
+
+        (Agendar Atendimento) as UC4 %% Representa o "Agendamento da Consulta"
+        (Visualizar Histórico de Agendamentos) as UC6
+        (Registrar Indicadores de Saúde) as UC7
+        (Consultar Histórico de Glicemia e Pressão Arterial) as UC8 %% Nome mais específico
+        (Confirmar/Cancelar Agendamento - Paciente) as UC11P %% Ajustado para Paciente
+
+        (Gerenciar Disponibilidade) as UC10
+        (Visualizar Agendamentos Recebidos) as UC12
+        (Confirmar/Cancelar Agendamento - Médico) as UC11S %% Ajustado para Médico
+
+        %% Casos de Uso Incluídos
+        (Consultar Médicos) as UC4a %% Ajustado para Médicos
+        (Visualizar Horários Livres) as UC4b
+
+        %% -------------------- Relacionamentos de Associação (Ator -> Caso de Uso) --------------------
+        Paciente -- UC1
+        Médico -- UC1
+
+        Paciente -- UC2
+        Médico -- UC2
+
+        Paciente -- UC3
+        Médico -- UC3
+
+        Paciente -- UC9
+
+        Paciente -- UC4
+
+        Paciente -- UC6
+
+        Paciente -- UC7
+
+        Paciente -- UC8
+
+        Paciente -- UC11P
+
+        Médico -- UC10
+        Médico -- UC11S
+        Médico -- UC12
+
+        %% -------------------- Relacionamentos de Inclusão (Caso de Uso <<includes>> Outro Caso de Uso) --------------------
+        UC4 ..> UC4a : <<includes>>
+        UC4 ..> UC4b : <<includes>>
+    }
 
