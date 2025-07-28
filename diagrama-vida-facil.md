@@ -1,31 +1,49 @@
-# Diagrama de Caso de Uso - Sistema Vida+Fácil
+# Diagrama de Caso de Uso - Sistema Vida+Fácil (Atualizado)
 
-Aqui está o diagrama de caso de uso para o nosso sistema:
+Este diagrama ilustra os casos de uso para o sistema Vida+Fácil, focando nos atores Paciente e Médico.
 
 ```mermaid
-graph TD;
+%% Define o tipo de gráfico como "grafo de cima para baixo" (Top-Down)
+graph TD
 
-    actor Paciente;
-    actor Medico;
+    %% -------------------- Definição dos Atores --------------------
+    actor Paciente
+    actor Médico
 
-    rectangle "Sistema Medico" {
+    %% -------------------- Delimitação do Sistema (Boundary) --------------------
+    rectangle "Sistema Vida+Fácil" {
 
-        (Solicitar Consulta) as UC1
+        %% -------------------- Casos de Uso --------------------
+        (Agendar Consulta) as UC1
         (Solicitar Cancelamento de Consulta) as UC2
-        (Marca Consulta) as UC2
-        (Prescreve Medicação) as UC4
-        (Realiza Consulta) as UC5
-        (Solicita Realização de Exames) as UC6
+        (Realizar Consulta) as UC3
+        (Prescrever Medicação) as UC4
+        (Solicitar Realização de Exames) as UC5
+        (Registrar Resultados de Glicemia) as UC6
+        (Registrar Resultados de Pressão Arterial) as UC7
+        (Consultar Histórico de Saúde) as UC8
 
-        Paciente -- UC1
-        Paciente -- UC2
-      
-        Medico -- UC5
+        %% -------------------- Relacionamentos de Associação (Ator -> Caso de Uso) --------------------
+        Paciente -- UC1 %% Paciente pode agendar consulta
+        Paciente -- UC2 %% Paciente pode solicitar cancelamento
+        Paciente -- UC6 %% Paciente pode registrar glicemia
+        Paciente -- UC7 %% Paciente pode registrar pressão arterial
+        Paciente -- UC8 %% Paciente pode consultar seu histórico
 
-        UC1 ..> UC2 : <<include>>
+        Médico -- UC1 %% Médico pode agendar consulta
+        Médico -- UC3 %% Médico realiza a consulta
+        Médico -- UC4 %% Médico prescreve medicação
+        Médico -- UC5 %% Médico solicita exames
+        Médico -- UC6 %% Médico pode registrar glicemia (para o paciente)
+        Médico -- UC7 %% Médico pode registrar pressão arterial (para o paciente)
+        Médico -- UC8 %% Médico pode consultar o histórico do paciente
 
-        UC2 <.. UC4 : <<extend>>
+        %% -------------------- Relacionamentos de Extensão (Opcional) --------------------
+        %% Realizar Consulta pode estender para Prescrever Medicação
+        UC3 <.. UC4 : <<extend>>
 
-        UC5 <.. UC6 : <<extend>>
+        %% Realizar Consulta pode estender para Solicitar Realização de Exames
+        UC3 <.. UC5 : <<extend>>
     }
-  
+```
+
