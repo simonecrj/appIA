@@ -1,43 +1,28 @@
 ```mermaid
 graph TD
+    Paciente((Paciente))
+    Medico((Médico))
 
+    Paciente --> A[Agendar Consulta]
+    Paciente --> B[Consultar Histórico de Saúde]
+    Paciente --> C[Registrar Resultados de Glicemia]
+    Paciente --> D[Registrar Resultados de Pressão Arterial]
 
-    %% -------------------- Definição dos Atores --------------------
-    actor Paciente
-    actor Médico
+    Medico --> A
+    Medico --> E[Visualizar Histórico de Paciente]
+    Medico --> C
+    Medico --> D
 
-    %% -------------------- Delimitação do Sistema (Boundary) --------------------
-    rectangle "Sistema Vida+Fácil" {
+    E --> B
 
-        %% -------------------- Casos de Uso --------------------
-        (Agendar Consulta) as UC1
-        (Solicitar Cancelamento de Consulta) as UC2
-        (Realizar Consulta) as UC3
-        (Prescrever Medicação) as UC4
-        (Solicitar Realização de Exames) as UC5
-        (Registrar Resultados de Glicemia) as UC6
-        (Registrar Resultados de Pressão Arterial) as UC7
-        (Consultar Histórico de Saúde) as UC8
+    %% Notas (simuladas com texto)
+    subgraph Notas
+        NoteP["Paciente:\n- Agenda consultas\n- Visualiza e registra saúde"]
+        NoteM["Médico:\n- Agenda para pacientes\n- Visualiza históricos\n- Registra resultados"]
+    end
 
-        %% -------------------- Relacionamentos de Associação (Ator -> Caso de Uso) --------------------
-        Paciente -- UC1
-        Paciente -- UC2
-        Paciente -- UC6
-        Paciente -- UC7
-        Paciente -- UC8
-
-        Médico -- UC1
-        Médico -- UC3
-        Médico -- UC4
-        Médico -- UC5
-        Médico -- UC6
-        Médico -- UC7
-        Médico -- UC8
-
-        %% -------------------- Relacionamentos de Extensão (Opcional) --------------------
-        UC3 <.. UC4 : <<extend>>
-        UC3 <.. UC5 : <<extend>>
-    }
+    Paciente --> NoteP
+    Medico --> NoteM
 ```
 ### Atores
 
