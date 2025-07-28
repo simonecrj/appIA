@@ -7,7 +7,7 @@ graph TD
 
 actor Paciente
 
-actor Médico
+actor Medico
 
     %% -------------------- Definição dos Atores --------------------
    
@@ -32,13 +32,13 @@ actor Médico
         Paciente -- UC7 %% Paciente pode registrar pressão arterial
         Paciente -- UC8 %% Paciente pode consultar seu histórico
 
-        Médico -- UC1 %% Médico pode agendar consulta
-        Médico -- UC3 %% Médico realiza a consulta
-        Médico -- UC4 %% Médico prescreve medicação
-        Médico -- UC5 %% Médico solicita exames
-        Médico -- UC6 %% Médico pode registrar glicemia (para o paciente)
-        Médico -- UC7 %% Médico pode registrar pressão arterial (para o paciente)
-        Médico -- UC8 %% Médico pode consultar o histórico do paciente
+        Medico -- UC1 %% Médico pode agendar consulta
+        Medico -- UC3 %% Médico realiza a consulta
+        Medico -- UC4 %% Médico prescreve medicação
+        Medico -- UC5 %% Médico solicita exames
+        Medico -- UC6 %% Médico pode registrar glicemia (para o paciente)
+        Medico -- UC7 %% Médico pode registrar pressão arterial (para o paciente)
+        Medico -- UC8 %% Médico pode consultar o histórico do paciente
 
         %% -------------------- Relacionamentos de Extensão (Opcional) --------------------
         %% Realizar Consulta pode estender para Prescrever Medicação
