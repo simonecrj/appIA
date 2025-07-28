@@ -7,8 +7,7 @@ graph TD
 
 
     %% -------------------- Definição dos Atores --------------------
-actor Paciente
-actor Medico
+
 Paciente((Paciente))
 Medico((Medico)
 
